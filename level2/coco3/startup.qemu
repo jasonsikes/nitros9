@@ -1,0 +1,5 @@
+link shell
+chd /d0/sys
+echo
+merge stdfonts stdptrs stdpats_2 stdpats_4 stdpats_16
+merge isolatin1font ibmedcfont

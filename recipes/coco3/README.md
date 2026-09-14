@@ -36,6 +36,7 @@ From the repository root, ensure:
 ## Build Directories
 
 - [`floppy/`](floppy/) builds CoCo 3 Level 2 double-sided floppy disk images
+- [`floppy_qemu/`](floppy_qemu/) builds a CoCo 3 level 2 35-track, single-sided floppy that boots under QEMU guests
 - [`dw/`](dw/) builds a CoCo 3 DriveWire-oriented disk image
 - [`dw_mega/`](dw_mega/) builds an expanded CoCo 3 DriveWire image with third-party software
 
@@ -79,6 +80,23 @@ Optional features:
   - `fnmount`
   - `fnmountimg`
   - `fnstatus`
+
+## QEMU Floppy Build ([`coco3/floppy_qemu`](floppy_qemu/))
+
+```sh
+cd floppy_qemu
+make
+```
+
+Primary output:
+
+- `l2_coco3_qemu.dsk`
+
+This is a boot floppy that includes drivers for booting as a Qemu guest system.
+
+The kernel track is `rel` + `boot_qemu` + `krn`.
+
+OS9Boot has `rbqemu` (`/D0`, `/DD`, `/H0`), `scqemu` (`/T0`), `clock2_qemu`, and a CoCo3 window set (40-column and 80-column `/Term`).
 
 ## DriveWire Build ([`coco3/dw`](dw/))
 
