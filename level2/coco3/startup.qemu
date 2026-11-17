@@ -1,5 +1,9 @@
-link shell
-chd /d0/sys
+* Echo welcome message
+echo * Welcome to NitrOS-9 Level 2 *
+echo *      with DriveWire 4       *
+echo *   on the Color Computer 3   *
 echo
-merge stdfonts stdptrs stdpats_2 stdpats_4 stdpats_16
-merge isolatin1font ibmedcfont
+* Lock shell and std utils into memory
+link shell
+load utilpak1
+

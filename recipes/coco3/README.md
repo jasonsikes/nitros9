@@ -36,7 +36,7 @@ From the repository root, ensure:
 ## Build Directories
 
 - [`floppy/`](floppy/) builds CoCo 3 Level 2 double-sided floppy disk images
-- [`floppy_qemu/`](floppy_qemu/) builds a CoCo 3 level 2 35-track, single-sided floppy that boots under QEMU guests
+- [`floppy_qemu/`](floppy_qemu/) builds the level 2 floppy image plus QEMU virt-device drivers
 - [`dw/`](dw/) builds a CoCo 3 DriveWire-oriented disk image
 - [`dw_mega/`](dw_mega/) builds an expanded CoCo 3 DriveWire image with third-party software
 
@@ -86,17 +86,20 @@ Optional features:
 ```sh
 cd floppy_qemu
 make
+make TRACKS=80
+make MINIMAL=1
 ```
 
 Primary output:
 
-- `l2_coco3_qemu.dsk`
+- `l2_coco3_qemu.dsk` (default)
+- `l2_coco3_qemu_minimal.dsk` (`MINIMAL=1`)
 
-This is a boot floppy that includes drivers for booting as a Qemu guest system.
+This is the level 2 floppy recipe with drivers for the QEMU virt devices added. Media, commands, `SYS`, `DEFS`, and Basic09 match [`floppy/`](floppy/). The startup file is `startup.qemu`. `KEYRPT` and `MAME` still generate a startup the same way as the floppy recipe.
 
 The kernel track is `rel` + `boot_qemu` + `krn`.
 
-OS9Boot has `rbqemu` (`/D0`, `/DD`, `/H0`), `scqemu` (`/T0`), `clock2_qemu`, and a CoCo3 window set (40-column and 80-column `/Term`).
+OS9Boot keeps the CoCo 3 window system. Disk devices are `rbqemu` (`/DD`, `/D0`, `/H0`), plus `scqemu` (`/T0`) and `clock2_qemu`. `MINIMAL=1` keeps `/DD` only.
 
 ## DriveWire Build ([`coco3/dw`](dw/))
 
