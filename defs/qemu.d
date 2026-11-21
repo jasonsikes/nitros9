@@ -6,7 +6,7 @@ QEMU.D              SET       1
 *
 * Map:
 *   /D0    virt disk unit 0 (QD.D0), boot floppy (first -drive)
-*   /H0    virt disk unit 1 (QD.H0), hard disk
+*   /H0    virt disk unit 1 (QD.H0), hard disk  (second -drive)
 *   /DD    virt disk unit QD.DD (same unit as /D0)
 *   /T0    virt serial (SCQemu)
 *   /Term  GIME window (vtio), not the virt serial
